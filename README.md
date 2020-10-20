@@ -1,9 +1,9 @@
 ![](./titleOSU.PNG)
 =====
 
-<!-- [![Build Status](https://travis-ci.org/osu-crypto/libOTe.svg?branch=master)](https://travis-ci.org/osu-crypto/libOTe) -->
+[![Build Status](https://travis-ci.org/osu-crypto/libOTe.svg?branch=master)](https://travis-ci.org/osu-crypto/libOTe)
 
-A fast and portable C++14 library for Oblivious Transfer extension (OTe). The 
+A fast and portable C++11 library for Oblivious Transfer extension (OTe). The 
 primary design goal of this library to obtain *high performance* while being 
 *easy to use*.  This library currently implements:
  
@@ -180,8 +180,8 @@ will be placed in `libOTe/lib` and the binary `frontend_libOTe` will be placed i
  `   cd libOTe/cryptoTools/thirdparty/linux; bash miracl.get`.
 
  * `cmake .  -DENABLE_RELIC=ON`: Build the library with integration to the 
-      [Relic](https://github.com/relic-toolkit/relic) library. Requires that
-      relic is built with `cmake . -DMULTI=PTHREAD` and installed. 
+      [Relic](https://github.com/ladnir/relic/) library. Requires that
+      relic is built with `cmake . -DMULTI=OPENMP` and installed. **Requires an older version of relic found here [Relic](https://github.com/ladnir/relic/)**
  * **Linux Only**: `cmake .  -DENABLE_SIMPLESTOT=ON`: Build the library with integration to the 
       [SimplestOT](https://github.com/osu-crypto/libOTe/tree/master/SimplestOT) 
        library implementing a base OT. Also works with only relic but is slower.

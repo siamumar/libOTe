@@ -33,9 +33,6 @@ namespace osuCrypto
     {
         std::array<std::array<block, 2>, gOtExtBaseOtCount>baseRecvOts;
 
-        if (!hasBaseOts())
-            throw std::runtime_error("base OTs have not been set. " LOCATION);
-
         for (u64 i = 0; i < mGens.size(); ++i)
         {
             baseRecvOts[i][0] = mGens[i][0].get<block>();
@@ -163,7 +160,7 @@ namespace osuCrypto
 
             // transpose our 128 columns of 1024 bits. We will have 1024 rows, 
             // each 128 bits wide.
-            transpose128x1024(t0);
+            sse_transpose128x1024(t0);
 
 
             //block* mStart = mIter;

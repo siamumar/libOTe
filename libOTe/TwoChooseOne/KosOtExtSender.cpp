@@ -27,9 +27,6 @@ namespace osuCrypto
 
     KosOtExtSender KosOtExtSender::splitBase()
     {
-        if (!hasBaseOts())
-            throw std::runtime_error("base OTs have not been set. " LOCATION);
-
         std::array<block, gOtExtBaseOtCount> baseRecvOts;
         for (u64 i = 0; i < mGens.size(); ++i)
             baseRecvOts[i] = mGens[i].get<block>();
@@ -157,7 +154,7 @@ namespace osuCrypto
 
             // transpose our 128 columns of 1024 bits. We will have 1024 rows,
             // each 128 bits wide.
-            transpose128x1024(t);
+            sse_transpose128x1024(t);
 
 
             //std::array<block, 2>* mStart = mIter;

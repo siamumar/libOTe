@@ -156,9 +156,9 @@ namespace tests_libOTe
     {
 #ifdef ENABLE_KKRT
         setThreadName("Sender");
-        
-        PRNG prng0(block(4253465, 3434565));
-        PRNG prng1(block(42532335, 334565));
+
+        PRNG prng0(_mm_set_epi32(4253465, 3434565, 234435, 23987045));
+        PRNG prng1(_mm_set_epi32(4253465, 3434565, 234435, 23987025));
 
         // The total number that we wish to do
         u64 numOTs = 1030;
@@ -313,8 +313,8 @@ throw UnitTestSkipped("ENALBE_KKRT is not defined.");
 #ifdef ENABLE_OOS
         setThreadName("Sender");
 
-        PRNG prng0(block(4253465, 3434565));
-        PRNG prng1(block(42532335, 334565));
+        PRNG prng0(_mm_set_epi32(4253465, 3434565, 234435, 23987045));
+        PRNG prng1(_mm_set_epi32(4253465, 3434565, 234435, 23987025));
 
         u64 numOTs = 128 * 16;
 
@@ -384,9 +384,8 @@ throw UnitTestSkipped("ENALBE_KKRT is not defined.");
 #ifdef ENABLE_RR
         setThreadName("Sender");
 
-
-        PRNG prng0(block(4253465, 3434565));
-        PRNG prng1(block(42532335, 334565));
+        PRNG prng0(_mm_set_epi32(4253465, 3434565, 234435, 23987045));
+        PRNG prng1(_mm_set_epi32(4253465, 3434565, 234435, 23987025));
 
         u64 numOTs = 80;
         u64 inputSize = 40;
@@ -422,8 +421,8 @@ throw UnitTestSkipped("ENALBE_KKRT is not defined.");
 #ifdef ENABLE_OOS
         setThreadName("Sender");
 
-        PRNG prng0(block(4253465, 3434565));
-        PRNG prng1(block(42532335, 334565));
+        PRNG prng0(_mm_set_epi32(4253465, 3434565, 234435, 23987045));
+        PRNG prng1(_mm_set_epi32(4253465, 3434565, 234435, 23987025));
 
         u64 numOTs = 80;
         u64 inputSize = 8;
@@ -477,7 +476,7 @@ throw UnitTestSkipped("ENALBE_KKRT is not defined.");
 
     void NcoOt_genBaseOts_Test()
     {
-#if defined(LIBOTE_HAS_BASE_OT) && defined(ENABLE_OOS)
+#ifdef LIBOTE_HAS_BASE_OT
         IOService ios(0);
         Session ep0(ios, "127.0.0.1", 1212, SessionMode::Server);
         Session ep1(ios, "127.0.0.1", 1212, SessionMode::Client);
@@ -509,7 +508,7 @@ throw UnitTestSkipped("ENALBE_KKRT is not defined.");
                 throw RTE_LOC;
         }
 #else
-        throw UnitTestSkipped("no base OTs are enabled or ENABLE_OOS is not defined");
+        throw UnitTestSkipped("no base OTs are enabled ");
 #endif
     }
 
